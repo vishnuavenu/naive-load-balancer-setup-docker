@@ -1,0 +1,31 @@
+version: "2"
+services:
+   # building nginx load-balancer
+   load_balancer:
+   	build:
+      	   context: ./load_balancer
+	port:
+	   -  "80:80"
+	links:
+	   -  server_1
+	   -  server_2
+	   -  server_3
+   # building Server 1
+   server_1:			
+	build:
+  	   context: ./server1
+  	   image: server_1
+   # building Server 2
+   server_2:
+	build:
+            context: ./server2
+  	    image: server_2
+
+   # building Server 3
+   server_3:
+	build:
+  	   context: ./server3
+  	   image: server_3
+
+
+

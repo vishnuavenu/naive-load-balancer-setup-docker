@@ -1,0 +1,19 @@
+version: "2"
+services:
+  loadbalancer: 
+    build: 
+      context: ./load_balancer
+    ports:
+      -  "80:80"
+    links:
+      -  alpha
+      -  beta
+  alpha:
+    build:
+      context: ./server1
+  beta:
+    build:
+      context: ./server2
+  charlie:
+    build:
+      context: ./server3  
